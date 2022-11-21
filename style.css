@@ -5,7 +5,7 @@ body {
 	padding-bottom: 0;
 }
 
-li {
+li, p {
 	line-height: 1.2;
 	margin-top: 8px;
 }

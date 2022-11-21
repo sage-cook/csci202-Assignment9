@@ -6,7 +6,7 @@ const PIXELRATIO = Math.round(window.devicePixelRatio) || 1;
 const IMGANT = (img => {img.src = 'assets/ant.png'; return img})(document.createElement('img'));
 const CELLSIZE = 80;
 const CELLRESOLUTION = CELLSIZE * PIXELRATIO;
-const [bheight,bwidth] = [5,6];
+const [bheight,bwidth] = [8,10];
 
 // Initial Setup
 window.addEventListener('load',function() {
