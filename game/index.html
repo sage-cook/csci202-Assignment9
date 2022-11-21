@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ant Machine</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="game.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Ant Machine</h1>
+			<p>A game about markets, computers, and eusocial insects.</p>
+		</header>
+		<div id="build-view" class="boxdiv">
+			<div id="tool-panel" class="boxdiv">
+				<h3 id="tool-heading">
+					Tools
+				</h3>
+				<div id="tool-list">
+					<button type="button" id="tool-button-draw" class="tool-button tool-active" data-toolid="0" title="Draw Path">
+						<img src="assets/tool_button_draw.svg" draggable="false"></img>
+					</button>
+					<button type="button" id="tool-button-ant" class="tool-button" data-toolid="1" title="Place Ants">
+						<img src="assets/ant.svg" draggable="false"></img>
+					</button>
+					<button type="button" id="tool-button-tunnel-vertical" class="tool-button" data-toolid="2" title="Vertical Tunnel">
+						<img src="assets/tool_button_tunnel.svg" draggable="false"></img>
+					</button>
+					<button type="button" id="tool-button-tunnel-horizontal" class="tool-button" data-toolid="3" title="Horizontal Tunnel">
+						<img src="assets/tool_button_tunnel.svg" draggable="false"></img>
+					</button>
+				</div>
+			</div>
+			<div id="view-panel" class="boxdiv">
+				<div id="control-bar">
+					<button type="button" id="control-button-simulate" class="control-button">
+						Simulate!
+					</button>
+				</div>
+				<div id="circuit-area">
+					<table id="circuit-board">
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

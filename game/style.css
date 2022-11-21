@@ -1,0 +1,132 @@
+:root {
+	font-family: Book Antiqua, serif;
+}
+
+.boxdiv {
+	border: 2px solid black;
+}
+
+::selection {
+	background: black;
+	color: yellow;
+}
+
+button {
+	user-select: none;
+}
+
+header {
+	text-align: center;
+}
+
+#build-view {
+	padding: 5px;
+	width: 60%;
+	height: 560px;
+	margin: auto;
+	display: flex;
+}
+
+#tool-panel {
+	flex-basis: 212px;
+	flex-shrink: 0;
+	margin-right: 5px;
+}
+
+#tool-heading {
+	border-bottom: 2px solid black;
+	margin: 0;
+	text-align: center;
+}
+
+#tool-list {
+	padding: 2px;
+	display: flex;
+	flex-flow: row wrap;
+	align-content: flex-start;	
+}
+
+.tool-button {
+	width: 100px;
+	height: 100px;
+	background: white;
+	border: 2px solid white;
+	margin: 2px;
+}
+
+.tool-button:hover {
+	border-color: yellow;
+}
+
+.tool-button:active {
+	border-color: red;
+}
+
+.tool-button > img {
+	display: block;
+	margin: auto;
+	user-select: none;
+	max-width: 90%;
+	max-height: 90%;
+}
+
+.tool-button.tool-active {
+	background-color: #ddeeff;
+}
+
+#tool-button-tunnel-horizontal > img{
+	transform: rotate(90deg);
+}
+
+#view-panel {
+	flex-grow: 1;
+	flex-shrink: 1;
+	min-width: 0;
+	flex-basis: 480px;
+	display: flex;
+	flex-direction: column;
+	
+}
+
+#control-bar {
+	border-bottom: 2px solid black;
+	height: 60px;
+	padding: 5px;
+	
+}
+
+#circuit-area {
+	overflow: auto;
+	max-width: 100%;
+	height: 100%;
+	padding: 5px;
+}
+
+#circuit-board {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#circuit-board td {
+	border: 1px solid black;
+	width: 80px;
+	height: 80px;
+	overflow: clip;
+	padding: 0;
+}
+
+canvas {
+	display: block;
+}
+
+@media screen and (max-width: 1200px) {
+	#build-view {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	#tool-panel {
+		flex-basis: 108px;
+	}
+}
