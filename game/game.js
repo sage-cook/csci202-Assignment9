@@ -1,5 +1,6 @@
 var circuitBoard;
 var currentTool = 0;
+var savedCircuit;
 
 const PIXELRATIO = Math.round(window.devicePixelRatio) || 1;
 
@@ -95,6 +96,19 @@ window.addEventListener('load',function() {
 				}
 			}
 		},
+		loadData: function(loc) {
+			// TODO resize board to fit data
+			
+			for(let x = 0; x < bwidth; x++) for(let y = 0; y < bheight; y++)
+			{
+				let c = this.cells[y][x];
+				let d = loc.cells[y][x];
+				c.connections = [...d.connections];
+				c.ant = d.ant;
+				c.antDir = d.antDir;
+			}
+			this.drawCells();
+		}
 	};
 	circuitBoard.table.style.width = CELLSIZE*bwidth+'px';
 	
@@ -148,6 +162,21 @@ window.addEventListener('load',function() {
 		circuitBoard.simulate();
 		circuitBoard.drawFlagged();
 	});
+	
+	let saveButton = document.getElementById('control-button-save');
+	saveButton.addEventListener('mousedown', function() {
+		savedCircuit = new CircuitData(circuitBoard);
+	});
+	
+	let loadButton = document.getElementById('control-button-load');
+	loadButton.addEventListener('mousedown', function() {
+		if(savedCircuit != undefined)
+		{
+			circuitBoard.loadData(savedCircuit);
+		}
+	});
+	// testing only
+	circuitBoard.loadData(savedCircuit);
 });
 
 /**
@@ -353,6 +382,13 @@ class CircuitData
 {
 	constructor (board)
 	{
-		
+		this.cells = board.cells.map(row => row.map(cell => ({
+				connections: [...cell.connections],
+				ant: cell.ant,
+				antDir: cell.antDir
+		})));
 	}
 }
+
+// And gate for test demonstration
+savedCircuit={"cells":[[{"connections":[false,true,false,true],"ant":true,"antDir":3},{"connections":[true,false,false,true],"ant":false,"antDir":1},{"connections":[true,false,true,false],"ant":false,"antDir":0},{"connections":[true,false,true,false],"ant":false,"antDir":0},{"connections":[true,false,true,false],"ant":false,"antDir":0},{"connections":[false,false,true,true],"ant":false,"antDir":0},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}],[{"connections":[true,true,false,false],"ant":false,"antDir":3},{"connections":[false,true,true,true],"ant":false,"antDir":0},{"connections":[true,false,false,true],"ant":false,"antDir":2},{"connections":[true,false,true,true],"ant":false,"antDir":2},{"connections":[false,false,true,true],"ant":false,"antDir":1},{"connections":[false,true,false,true],"ant":false,"antDir":3},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}],[{"connections":[true,false,false,true],"ant":false,"antDir":2},{"connections":[true,true,true,true],"ant":false,"antDir":3},{"connections":[true,true,true,true],"ant":false,"antDir":0},{"connections":[false,true,true,false],"ant":false,"antDir":3},{"connections":[true,true,false,true],"ant":false,"antDir":1},{"connections":[false,true,true,true],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}],[{"connections":[true,true,false,true],"ant":false},{"connections":[false,true,true,false],"ant":false,"antDir":3},{"connections":[true,true,false,false],"ant":false,"antDir":3},{"connections":[true,false,true,false],"ant":false,"antDir":0},{"connections":[false,true,true,false],"ant":false,"antDir":0},{"connections":[false,true,false,true],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}],[{"connections":[false,true,true,false],"ant":true,"antDir":0},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,true,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}],[{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}],[{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}],[{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false},{"connections":[false,false,false,false],"ant":false}]]};

@@ -11,8 +11,13 @@
 	color: yellow;
 }
 
+p {
+	margin:0;
+}
+
 button {
 	user-select: none;
+	font-family: Book Antiqua, serif;
 }
 
 header {
@@ -92,7 +97,10 @@ header {
 	border-bottom: 2px solid black;
 	height: 60px;
 	padding: 5px;
-	
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-between;
 }
 
 #circuit-area {
